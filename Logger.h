@@ -50,11 +50,19 @@ log_t *__static_logger_ptr;
 #define LOG_NODATE  1<<7
 #define LOG_NOLVL   1<<8
 
+/*
 #define DEBUG(fmt, args...) lprintf(__static_logger_ptr, LEVEL_DEBUG, fmt, args);
 #define INFO(fmt, args...)  lprintf(__static_logger_ptr, LEVEL_INFO, fmt, args);
 #define WARN(fmt, args...)  lprintf(__static_logger_ptr, LEVEL_WARN, fmt, args);
 #define ERROR(fmt, args...) lprintf(__static_logger_ptr, LEVEL_ERROR, fmt, args);
 #define FATAL(fmt, args...) lprintf(__static_logger_ptr, LEVEL_FATAL, fmt, args);
+*/
+#define DEBUG(fmt, ...) lprintf(__static_logger_ptr, LEVEL_DEBUG, fmt, ##__VA_ARGS__);
+#define INFO(fmt, ...)  lprintf(__static_logger_ptr, LEVEL_INFO, fmt,  ##__VA_ARGS__);
+#define WARN(fmt, ...)  lprintf(__static_logger_ptr, LEVEL_WARN, fmt,  ##__VA_ARGS__);
+#define ERROR(fmt, ...) lprintf(__static_logger_ptr, LEVEL_ERROR, fmt, ##__VA_ARGS__);
+#define FATAL(fmt, ...) lprintf(__static_logger_ptr, LEVEL_FATAL, fmt, ##__VA_ARGS__);
+
 
 /*
  * Logs to the logfile using printf()-like format strings.
