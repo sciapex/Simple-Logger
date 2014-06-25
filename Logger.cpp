@@ -40,7 +40,7 @@ int lprintf( log_t *log, unsigned int level, char *fmt, ... ) {
         struct tm tTemp = {0};
         struct timeval tvTemp = {0};
         va_list ap;
-        static char *levels[6] = { "[TRACE] ", 
+        static const char *levels[6] = { "[TRACE] ", 
                 "[DEBUG] ", 
                 "[INFO] ", 
                 "[WARN] ", 
@@ -77,7 +77,7 @@ int lprintf( log_t *log, unsigned int level, char *fmt, ... ) {
         /* format datetime + level */
         gettimeofday(&tvTemp, NULL);
         localtime_r(&tvTemp.tv_sec, &tTemp);
-        cnt = sprintf(line, "[%04d-%02d-%02d %02d:%02d:%02d.%03d]%s", tTemp.tm_year + 1900,
+        cnt = sprintf(line, "[%04d-%02d-%02d %02d:%02d:%02d.%03ld]%s", tTemp.tm_year + 1900,
                         tTemp.tm_mon + 1, tTemp.tm_mday, tTemp.tm_hour, tTemp.tm_min, tTemp.tm_sec,
                         tvTemp.tv_usec/1000, levels[level]);
 
@@ -173,12 +173,13 @@ log_t *log_open(char *pathname, char *logname, int flags, unsigned int size) {
 }
 
 void log_close( log_t *log ) {
-        sem_wait(&log->sem);
-        sem_destroy(&log->sem);
-        close(log->fd);
-        free(log);
-        log = NULL;
-        __static_logger_ptr = NULL;
-
+        if (log != NULL) {
+                sem_wait(&log->sem);
+                sem_destroy(&log->sem);
+                close(log->fd);
+                free(log);
+                log = NULL;
+                __static_logger_ptr = NULL;
+        }
         return;
 }
