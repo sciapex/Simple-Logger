@@ -30,7 +30,7 @@ typedef struct {
         sem_t sem;
 } log_t;
 
-log_t *__static_logger_ptr;
+static log_t *__static_logger_ptr;
 
 #define LEVEL_TRACE 0
 #define LEVEL_DEBUG 1
