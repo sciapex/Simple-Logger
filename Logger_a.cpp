@@ -1,4 +1,4 @@
-#include "Logger.h"
+#include "Logger_a.h"
 
 static int CreateLogName(log_t *log)
 {
