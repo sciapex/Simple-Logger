@@ -33,7 +33,7 @@ typedef struct {
 
 #ifndef __STATIC_LOGGER_PTR
 #define __STATIC_LOGGER_PTR
-        static log_t *__static_logger_ptr = 0;
+        extern log_t *__static_logger_ptr;
 #endif
 
 #define LEVEL_TRACE 0
