@@ -1,5 +1,7 @@
 #include "Logger_a.h"
 
+log_t *__static_logger_ptr = 0;
+
 static int CreateLogName(log_t *log)
 {
         struct tm tTemp = {0};
