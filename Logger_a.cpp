@@ -183,7 +183,8 @@ log_t *log_open(char *pathname, char *logname, int flags, unsigned int size) {
         return log;
 }
 
-int log_close(log_t *log) {
+int log_close() {
+        log_t *log = __static_logger_ptr;
         if (log != NULL) {
                 sem_wait(&log->sem);
                 sem_destroy(&log->sem);
