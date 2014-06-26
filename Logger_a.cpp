@@ -1,6 +1,6 @@
 #include "Logger_a.h"
 
-log_t *__static_logger_ptr = 0;
+log_t *__static_logger_ptr = NULL;
 
 static int CreateLogName(log_t *log)
 {
