@@ -97,6 +97,6 @@ log_t *log_open( char *pname, char *fname, int flags = LOG_SIZE, unsigned int si
  * 
  * log  - The log_t corresponding to the log you want to close
  */
-int log_close(log_t *log);
+int log_close();
 
 #endif
