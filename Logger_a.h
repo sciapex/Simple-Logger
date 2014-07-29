@@ -17,6 +17,10 @@
 
 #define LOGLINE_MAX 1024
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef struct {
         int fd;
         int flags;
@@ -98,5 +102,9 @@ log_t *log_open( char *pname, char *fname, int flags = LOG_SIZE, unsigned int si
  * log  - The log_t corresponding to the log you want to close
  */
 int log_close();
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
