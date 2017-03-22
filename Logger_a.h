@@ -78,7 +78,7 @@ typedef struct {
  *
  * Returns 0 on success, or -1 on failure.
  */
-int lprintf(log_t *log, unsigned int level, char *fmt, ... );
+extern int lprintf(log_t *log, unsigned int level, char *fmt, ... );
 
 /*
  * Initializes the logfile to be written to with fprintf().
@@ -94,14 +94,14 @@ int lprintf(log_t *log, unsigned int level, char *fmt, ... );
  *
  * Returns NULL on failure, and a valid log_t (value > 0) on success.
  */
-log_t *log_open( char *pname, char *fname, int flags = LOG_SIZE, unsigned int size = 0);
+extern log_t *log_open( char *pname, char *fname, int flags = LOG_SIZE, unsigned int size = 0);
 
 /*
  * Closes a logfile when it's no longer needed
  * 
  * log  - The log_t corresponding to the log you want to close
  */
-int log_close();
+extern int log_close();
 
 #ifdef __cplusplus
 }
