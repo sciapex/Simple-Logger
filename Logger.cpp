@@ -82,7 +82,7 @@ int lprintf( log_t *log, unsigned int level, char *fmt, ... ) {
                         tvTemp.tv_usec/1000, levels[level]);
 
         va_start(ap, fmt);
-        linecnt = vsnprintf(line+cnt, sizeof(line)-cnt, fmt, ap);    /*如果输入的日志过长会自动截取*/
+        linecnt = vsnprintf(line+cnt, sizeof(line)-cnt, fmt, ap);
         va_end(ap);
 
         //line[sizeof(line)-1] = '\0';
